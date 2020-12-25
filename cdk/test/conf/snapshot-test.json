@@ -1,0 +1,12 @@
+{
+  "stackName": "test-SnowflakeAWSMySQLConnector-Stack",
+  "awsAccountId": "123456789012",
+  "awsRegion": "ap-northeast-1",
+  "lambdaFunctionName": "dev-snowflake-aws-mysql-connector",
+  "vpcId": "vpc-abcdefghijk123",
+  "subnets": [{
+    "id": "subnet-abcdefghijk123",
+    "availabilityZone": "ap-northeast-1a"
+  }],
+  "securityGroupIds": ["sg-abcdefghijk123"]
+}

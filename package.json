@@ -1,0 +1,43 @@
+{
+  "name": "snowflake-aws-mysql-connector",
+  "version": "0.0.1",
+  "license": "mit",
+  "private": true,
+  "bin": {
+    "snowflake-aws-mysql-connector": "bin/snowflake-aws-mysql-connector.js"
+  },
+  "scripts": {
+    "build": "npm run build:ts",
+    "build:ts": "tsc",
+    "build:cdk": "npm run build:lambdafunction && npm run build:lambdalayer",
+    "build:lambdafunction": "rm -rf dist/app/ && mkdir -p dist/app/conf-file/ && cp -a conf/ dist/app/conf-file/ && npm install && npm run build:ts",
+    "build:lambdalayer": "rm -rf dist/lambda-layer/ && mkdir -p dist/lambda-layer/nodejs/ && cp package.json dist/lambda-layer/nodejs/ && cp package-lock.json dist/lambda-layer/nodejs/ && npm --prefix dist/lambda-layer/nodejs/ install --production",
+    "watch": "tsc -w",
+    "test": "jest",
+    "clean": "rm -rf node_modules/ dist/"
+  },
+  "devDependencies": {
+    "@aws-cdk/assert": "1.79.0",
+    "@aws-cdk/aws-iam": "^1.79.0",
+    "@aws-cdk/aws-lambda": "^1.79.0",
+    "@aws-cdk/core": "1.79.0",
+    "@types/jest": "^26.0.10",
+    "@types/node": "10.17.27",
+    "@typescript-eslint/eslint-plugin": "^4.2.0",
+    "@typescript-eslint/parser": "^4.2.0",
+    "aws-cdk": "1.79.0",
+    "eslint": "^7.9.0",
+    "eslint-config-prettier": "^6.11.0",
+    "eslint-plugin-prettier": "^3.1.4",
+    "jest": "^26.4.2",
+    "prettier": "^2.1.2",
+    "ts-jest": "^26.4.0",
+    "ts-node": "^8.1.0",
+    "typescript": "^3.9.7"
+  },
+  "dependencies": {
+    "@types/aws-lambda": "^8.10.67",
+    "mysql2": "^2.2.5",
+    "source-map-support": "^0.5.16"
+  }
+}
