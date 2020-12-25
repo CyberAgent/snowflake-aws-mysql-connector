@@ -156,11 +156,11 @@ create or replace external function <external_function_name>(q string)
 ;
 ```
 
-### Create Snowflake User Defined Function(UDF)
+### Create Snowflake User Defined Table Function(UDTF)
 
 |placeholder|value|example|
 |:--|:--|:--|
-|<function\_name>|udf name|mysql\_query|
+|<function\_name>|udf name|query\_mysql|
 |<external\_function\_name>|external function name|prod\_call\_api\_gateway\_mysql|
 ```sql
 create or replace function <function_name>(q string)
@@ -177,6 +177,7 @@ select value from
 ```
 
 ## Usage
+You can use UDTF(named as <function\_name>);
 
 ```sql
 -- select all
