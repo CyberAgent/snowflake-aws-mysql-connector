@@ -1,11 +1,11 @@
-import * as apigateway from "@aws-cdk/aws-apigateway";
-import * as ec2 from "@aws-cdk/aws-ec2";
-import * as lambda from "@aws-cdk/aws-lambda";
-import * as iam from "@aws-cdk/aws-iam";
-import * as logs from "@aws-cdk/aws-logs";
-import * as cdk from "@aws-cdk/core";
+import * as apigateway from "aws-cdk-lib/aws-apigateway";
+import * as ec2 from "aws-cdk-lib/aws-ec2";
+import * as lambda from "aws-cdk-lib/aws-lambda";
+import * as iam from "aws-cdk-lib/aws-iam";
+import * as logs from "aws-cdk-lib/aws-logs";
+import * as cdk from "aws-cdk-lib/core";
 import { Config } from "../../src/conf/config";
-import { config } from "process";
+import { Construct } from "constructs";
 
 export interface SnowflakeAWSMySQLConnectorStackProps extends cdk.StackProps {
   readonly config: Config;
@@ -15,7 +15,7 @@ export interface SnowflakeAWSMySQLConnectorStackProps extends cdk.StackProps {
 
 export class SnowflakeAWSMySQLConnectorStack extends cdk.Stack {
   constructor(
-    scope: cdk.Construct,
+    scope: Construct,
     id: string,
     props: SnowflakeAWSMySQLConnectorStackProps
   ) {
