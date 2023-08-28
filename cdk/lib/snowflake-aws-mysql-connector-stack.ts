@@ -81,7 +81,6 @@ export class SnowflakeAWSMySQLConnectorStack extends cdk.Stack {
     const snowflakeExternalIds: string[] = [];
     const externalIds: Set<string> = new Set();
     const arns: Set<string> = new Set();
-    console.log(props.config.snowflakeApiAwsIamUser);
     for (const user of props.config.snowflakeApiAwsIamUser) {
       arns.add(user.arn);
       externalIds.add(user.externalId);
