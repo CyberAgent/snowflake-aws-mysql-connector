@@ -8,5 +8,15 @@
     "id": "subnet-abcdefghijk123",
     "availabilityZone": "ap-northeast-1a"
   }],
-  "securityGroupIds": ["sg-abcdefghijk123"]
+  "securityGroupIds": ["sg-abcdefghijk123"],
+  "snowflakeApiAwsIamUser": [
+    {
+      "arn": "arn:aws:iam::987654321098:user/snowflake-iam-user",
+      "externalId": "snowflake-external-id"
+    }
+  ],
+  "mysqlHost": "10.0.0.123",
+  "mysqlUser": "readonly",
+  "mysqlPassword": "passowrd",
+  "mysqlDatabase": "mydb"
 }

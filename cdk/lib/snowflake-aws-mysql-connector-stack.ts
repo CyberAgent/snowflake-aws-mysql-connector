@@ -55,7 +55,7 @@ export class SnowflakeAWSMySQLConnectorStack extends cdk.Stack {
       `${props.config.lambdaFunctionName}-layer`,
       {
         code: lambda.AssetCode.fromAsset(props.lambdaLayerAssetPath),
-        compatibleRuntimes: [lambda.Runtime.NODEJS_12_X],
+        compatibleRuntimes: [lambda.Runtime.NODEJS_16_X],
       }
     );
     const lambdaFunction = new lambda.Function(
@@ -66,7 +66,7 @@ export class SnowflakeAWSMySQLConnectorStack extends cdk.Stack {
         code: lambda.Code.fromAsset(props.lambdaAssetPath),
         layers: [lambdaLayer],
         handler: "index.handler",
-        runtime: lambda.Runtime.NODEJS_12_X,
+        runtime: lambda.Runtime.NODEJS_16_X,
         timeout: cdk.Duration.seconds(10),
         logRetention: logs.RetentionDays.THREE_DAYS,
         environment: props.config.lambdaEnvironmentVariables,
@@ -81,6 +81,7 @@ export class SnowflakeAWSMySQLConnectorStack extends cdk.Stack {
     const snowflakeExternalIds: string[] = [];
     const externalIds: Set<string> = new Set();
     const arns: Set<string> = new Set();
+    console.log(props.config.snowflakeApiAwsIamUser);
     for (const user of props.config.snowflakeApiAwsIamUser) {
       arns.add(user.arn);
       externalIds.add(user.externalId);

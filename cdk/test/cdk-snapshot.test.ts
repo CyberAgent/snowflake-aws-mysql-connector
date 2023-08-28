@@ -7,6 +7,7 @@ import { SnowflakeAWSMySQLConnectorStackProps } from "../lib/snowflake-aws-mysql
 test("Snapshot Test", () => {
   const app = new cdk.App();
   const conf = config.getConfig("snapshot-test", "../../cdk/test/conf");
+  console.log(conf);
   const props: SnowflakeAWSMySQLConnectorStackProps = {
     config: conf,
     stackName: conf.stackName,
