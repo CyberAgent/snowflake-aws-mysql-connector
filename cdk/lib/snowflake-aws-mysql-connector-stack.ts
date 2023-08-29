@@ -1,11 +1,11 @@
-import * as apigateway from "@aws-cdk/aws-apigateway";
-import * as ec2 from "@aws-cdk/aws-ec2";
-import * as lambda from "@aws-cdk/aws-lambda";
-import * as iam from "@aws-cdk/aws-iam";
-import * as logs from "@aws-cdk/aws-logs";
-import * as cdk from "@aws-cdk/core";
+import * as apigateway from "aws-cdk-lib/aws-apigateway";
+import * as ec2 from "aws-cdk-lib/aws-ec2";
+import * as lambda from "aws-cdk-lib/aws-lambda";
+import * as iam from "aws-cdk-lib/aws-iam";
+import * as logs from "aws-cdk-lib/aws-logs";
+import * as cdk from "aws-cdk-lib/core";
 import { Config } from "../../src/conf/config";
-import { config } from "process";
+import { Construct } from "constructs";
 
 export interface SnowflakeAWSMySQLConnectorStackProps extends cdk.StackProps {
   readonly config: Config;
@@ -15,7 +15,7 @@ export interface SnowflakeAWSMySQLConnectorStackProps extends cdk.StackProps {
 
 export class SnowflakeAWSMySQLConnectorStack extends cdk.Stack {
   constructor(
-    scope: cdk.Construct,
+    scope: Construct,
     id: string,
     props: SnowflakeAWSMySQLConnectorStackProps
   ) {
@@ -55,7 +55,7 @@ export class SnowflakeAWSMySQLConnectorStack extends cdk.Stack {
       `${props.config.lambdaFunctionName}-layer`,
       {
         code: lambda.AssetCode.fromAsset(props.lambdaLayerAssetPath),
-        compatibleRuntimes: [lambda.Runtime.NODEJS_12_X],
+        compatibleRuntimes: [lambda.Runtime.NODEJS_16_X],
       }
     );
     const lambdaFunction = new lambda.Function(
@@ -66,7 +66,7 @@ export class SnowflakeAWSMySQLConnectorStack extends cdk.Stack {
         code: lambda.Code.fromAsset(props.lambdaAssetPath),
         layers: [lambdaLayer],
         handler: "index.handler",
-        runtime: lambda.Runtime.NODEJS_12_X,
+        runtime: lambda.Runtime.NODEJS_16_X,
         timeout: cdk.Duration.seconds(10),
         logRetention: logs.RetentionDays.THREE_DAYS,
         environment: props.config.lambdaEnvironmentVariables,

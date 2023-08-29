@@ -1,5 +1,5 @@
-import { SynthUtils } from "@aws-cdk/assert";
-import * as cdk from "@aws-cdk/core";
+import { Template } from "aws-cdk-lib/assertions";
+import * as cdk from "aws-cdk-lib/core";
 import * as SnowflakeAWSMySQLConnector from "../lib/snowflake-aws-mysql-connector-stack";
 import * as config from "../../src/conf/config";
 import { SnowflakeAWSMySQLConnectorStackProps } from "../lib/snowflake-aws-mysql-connector-stack";
@@ -21,6 +21,6 @@ test("Snapshot Test", () => {
     props
   );
   // THEN
-  const cloudFormation = SynthUtils.toCloudFormation(stack);
-  expect(cloudFormation).toMatchSnapshot();
+  const template = Template.fromStack(stack);
+  expect(template).toMatchSnapshot();
 });

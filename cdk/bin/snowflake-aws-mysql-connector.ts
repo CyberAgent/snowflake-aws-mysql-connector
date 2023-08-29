@@ -1,6 +1,5 @@
 #!/usr/bin/env node
-import "source-map-support/register";
-import * as cdk from "@aws-cdk/core";
+import * as cdk from "aws-cdk-lib/core";
 import {
   SnowflakeAWSMySQLConnectorStack,
   SnowflakeAWSMySQLConnectorStackProps,
@@ -20,4 +19,8 @@ const props: SnowflakeAWSMySQLConnectorStackProps = {
   lambdaLayerAssetPath: "../dist/lambda-layer/",
   env,
 };
-new SnowflakeAWSMySQLConnectorStack(app, "SnowflakeAWSMySQLConnectorStack", props);
+new SnowflakeAWSMySQLConnectorStack(
+  app,
+  "SnowflakeAWSMySQLConnectorStack",
+  props
+);

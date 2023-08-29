@@ -24,7 +24,7 @@ exports.handler = async function (
     snowflakeData = await snowflake.createSnowflakeData(resultRows);
   } catch (e) {
     console.error(`function failed.`, e);
-    invokeError = e;
+    invokeError = e as Error;
   }
 
   const result = {

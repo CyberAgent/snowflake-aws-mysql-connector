@@ -1,24 +1,56 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Snapshot Test 1`] = `
-Object {
-  "Outputs": Object {
-    "devsnowflakeawsmysqlconnectorrestapiEndpoint2C8E0A74": Object {
-      "Value": Object {
-        "Fn::Join": Array [
+{
+  "Outputs": {
+    "SnowflakeApiAllowedPrefixes": {
+      "Description": "api_allowed_prefixes",
+      "Value": {
+        "Fn::Join": [
           "",
-          Array [
+          [
             "https://",
-            Object {
-              "Ref": "devsnowflakeawsmysqlconnectorrestapi034D486F",
+            {
+              "Ref": "devsnowflakeawsmysqlconnectorrestapi7DB334E9",
             },
             ".execute-api.ap-northeast-1.",
-            Object {
+            {
               "Ref": "AWS::URLSuffix",
             },
             "/",
-            Object {
-              "Ref": "devsnowflakeawsmysqlconnectorrestapiDeploymentStagedefaultE3F69B5E",
+            {
+              "Ref": "devsnowflakeawsmysqlconnectorrestapiDeploymentStagedefault644A3DD6",
+            },
+            "/",
+          ],
+        ],
+      },
+    },
+    "SnowflakeApiAwsRoleArn": {
+      "Description": "api_aws_role_arn",
+      "Value": {
+        "Fn::GetAtt": [
+          "devsnowflakeawsmysqlconnectorsnowflakeroleDE07CE19",
+          "Arn",
+        ],
+      },
+    },
+    "devsnowflakeawsmysqlconnectorrestapiEndpointC27E1C14": {
+      "Value": {
+        "Fn::Join": [
+          "",
+          [
+            "https://",
+            {
+              "Ref": "devsnowflakeawsmysqlconnectorrestapi7DB334E9",
+            },
+            ".execute-api.ap-northeast-1.",
+            {
+              "Ref": "AWS::URLSuffix",
+            },
+            "/",
+            {
+              "Ref": "devsnowflakeawsmysqlconnectorrestapiDeploymentStagedefault644A3DD6",
             },
             "/",
           ],
@@ -26,109 +58,56 @@ Object {
       },
     },
   },
-  "Parameters": Object {
-    "AssetParameters67b7823b74bc135986aa72f889d6a8da058d0c4a20cbc2dfc6f78995fdd2fc24ArtifactHashBA91B77F": Object {
-      "Description": "Artifact hash for asset \\"67b7823b74bc135986aa72f889d6a8da058d0c4a20cbc2dfc6f78995fdd2fc24\\"",
-      "Type": "String",
-    },
-    "AssetParameters67b7823b74bc135986aa72f889d6a8da058d0c4a20cbc2dfc6f78995fdd2fc24S3Bucket4D46ABB5": Object {
-      "Description": "S3 bucket for asset \\"67b7823b74bc135986aa72f889d6a8da058d0c4a20cbc2dfc6f78995fdd2fc24\\"",
-      "Type": "String",
-    },
-    "AssetParameters67b7823b74bc135986aa72f889d6a8da058d0c4a20cbc2dfc6f78995fdd2fc24S3VersionKeyB0F28861": Object {
-      "Description": "S3 key for asset version \\"67b7823b74bc135986aa72f889d6a8da058d0c4a20cbc2dfc6f78995fdd2fc24\\"",
-      "Type": "String",
-    },
-    "AssetParameters9237631b006453b8d2b275e61053dbf9c1ec0da492720b99a9d83ce3b802c656ArtifactHash03CBE45C": Object {
-      "Description": "Artifact hash for asset \\"9237631b006453b8d2b275e61053dbf9c1ec0da492720b99a9d83ce3b802c656\\"",
-      "Type": "String",
-    },
-    "AssetParameters9237631b006453b8d2b275e61053dbf9c1ec0da492720b99a9d83ce3b802c656S3BucketE83B8C93": Object {
-      "Description": "S3 bucket for asset \\"9237631b006453b8d2b275e61053dbf9c1ec0da492720b99a9d83ce3b802c656\\"",
-      "Type": "String",
-    },
-    "AssetParameters9237631b006453b8d2b275e61053dbf9c1ec0da492720b99a9d83ce3b802c656S3VersionKeyEE13941B": Object {
-      "Description": "S3 key for asset version \\"9237631b006453b8d2b275e61053dbf9c1ec0da492720b99a9d83ce3b802c656\\"",
-      "Type": "String",
+  "Parameters": {
+    "BootstrapVersion": {
+      "Default": "/cdk-bootstrap/hnb659fds/version",
+      "Description": "Version of the CDK Bootstrap resources in this environment, automatically retrieved from SSM Parameter Store. [cdk:skip]",
+      "Type": "AWS::SSM::Parameter::Value<String>",
     },
   },
-  "Resources": Object {
-    "LogRetentionaae0aa3c5b4d4f87b02d85b201efdd8aFD4BFC8A": Object {
-      "DependsOn": Array [
+  "Resources": {
+    "LogRetentionaae0aa3c5b4d4f87b02d85b201efdd8aFD4BFC8A": {
+      "DependsOn": [
         "LogRetentionaae0aa3c5b4d4f87b02d85b201efdd8aServiceRoleDefaultPolicyADDA7DEB",
         "LogRetentionaae0aa3c5b4d4f87b02d85b201efdd8aServiceRole9741ECFB",
       ],
-      "Properties": Object {
-        "Code": Object {
-          "S3Bucket": Object {
-            "Ref": "AssetParameters67b7823b74bc135986aa72f889d6a8da058d0c4a20cbc2dfc6f78995fdd2fc24S3Bucket4D46ABB5",
-          },
-          "S3Key": Object {
-            "Fn::Join": Array [
-              "",
-              Array [
-                Object {
-                  "Fn::Select": Array [
-                    0,
-                    Object {
-                      "Fn::Split": Array [
-                        "||",
-                        Object {
-                          "Ref": "AssetParameters67b7823b74bc135986aa72f889d6a8da058d0c4a20cbc2dfc6f78995fdd2fc24S3VersionKeyB0F28861",
-                        },
-                      ],
-                    },
-                  ],
-                },
-                Object {
-                  "Fn::Select": Array [
-                    1,
-                    Object {
-                      "Fn::Split": Array [
-                        "||",
-                        Object {
-                          "Ref": "AssetParameters67b7823b74bc135986aa72f889d6a8da058d0c4a20cbc2dfc6f78995fdd2fc24S3VersionKeyB0F28861",
-                        },
-                      ],
-                    },
-                  ],
-                },
-              ],
-            ],
-          },
+      "Properties": {
+        "Code": {
+          "S3Bucket": "cdk-hnb659fds-assets-123456789012-ap-northeast-1",
+          "S3Key": "5cc92ed0cea39e2b8de2dbc527dfb5980a3af9564bd1084d840b9787c7d0467e.zip",
         },
         "Handler": "index.handler",
-        "Role": Object {
-          "Fn::GetAtt": Array [
+        "Role": {
+          "Fn::GetAtt": [
             "LogRetentionaae0aa3c5b4d4f87b02d85b201efdd8aServiceRole9741ECFB",
             "Arn",
           ],
         },
-        "Runtime": "nodejs10.x",
+        "Runtime": "nodejs18.x",
       },
       "Type": "AWS::Lambda::Function",
     },
-    "LogRetentionaae0aa3c5b4d4f87b02d85b201efdd8aServiceRole9741ECFB": Object {
-      "Properties": Object {
-        "AssumeRolePolicyDocument": Object {
-          "Statement": Array [
-            Object {
+    "LogRetentionaae0aa3c5b4d4f87b02d85b201efdd8aServiceRole9741ECFB": {
+      "Properties": {
+        "AssumeRolePolicyDocument": {
+          "Statement": [
+            {
               "Action": "sts:AssumeRole",
               "Effect": "Allow",
-              "Principal": Object {
+              "Principal": {
                 "Service": "lambda.amazonaws.com",
               },
             },
           ],
           "Version": "2012-10-17",
         },
-        "ManagedPolicyArns": Array [
-          Object {
-            "Fn::Join": Array [
+        "ManagedPolicyArns": [
+          {
+            "Fn::Join": [
               "",
-              Array [
+              [
                 "arn:",
-                Object {
+                {
                   "Ref": "AWS::Partition",
                 },
                 ":iam::aws:policy/service-role/AWSLambdaBasicExecutionRole",
@@ -139,12 +118,12 @@ Object {
       },
       "Type": "AWS::IAM::Role",
     },
-    "LogRetentionaae0aa3c5b4d4f87b02d85b201efdd8aServiceRoleDefaultPolicyADDA7DEB": Object {
-      "Properties": Object {
-        "PolicyDocument": Object {
-          "Statement": Array [
-            Object {
-              "Action": Array [
+    "LogRetentionaae0aa3c5b4d4f87b02d85b201efdd8aServiceRoleDefaultPolicyADDA7DEB": {
+      "Properties": {
+        "PolicyDocument": {
+          "Statement": [
+            {
+              "Action": [
                 "logs:PutRetentionPolicy",
                 "logs:DeleteRetentionPolicy",
               ],
@@ -155,104 +134,70 @@ Object {
           "Version": "2012-10-17",
         },
         "PolicyName": "LogRetentionaae0aa3c5b4d4f87b02d85b201efdd8aServiceRoleDefaultPolicyADDA7DEB",
-        "Roles": Array [
-          Object {
+        "Roles": [
+          {
             "Ref": "LogRetentionaae0aa3c5b4d4f87b02d85b201efdd8aServiceRole9741ECFB",
           },
         ],
       },
       "Type": "AWS::IAM::Policy",
     },
-    "devsnowflakeawsmysqlconnectorA759905B": Object {
-      "DependsOn": Array [
-        "devsnowflakeawsmysqlconnectorServiceRole4253ECFA",
+    "devsnowflakeawsmysqlconnectorB5BFA4DE": {
+      "DependsOn": [
+        "devsnowflakeawsmysqlconnectorServiceRoleE8A8AC35",
       ],
-      "Properties": Object {
-        "Code": Object {
-          "S3Bucket": Object {
-            "Ref": "AssetParameters9237631b006453b8d2b275e61053dbf9c1ec0da492720b99a9d83ce3b802c656S3BucketE83B8C93",
-          },
-          "S3Key": Object {
-            "Fn::Join": Array [
-              "",
-              Array [
-                Object {
-                  "Fn::Select": Array [
-                    0,
-                    Object {
-                      "Fn::Split": Array [
-                        "||",
-                        Object {
-                          "Ref": "AssetParameters9237631b006453b8d2b275e61053dbf9c1ec0da492720b99a9d83ce3b802c656S3VersionKeyEE13941B",
-                        },
-                      ],
-                    },
-                  ],
-                },
-                Object {
-                  "Fn::Select": Array [
-                    1,
-                    Object {
-                      "Fn::Split": Array [
-                        "||",
-                        Object {
-                          "Ref": "AssetParameters9237631b006453b8d2b275e61053dbf9c1ec0da492720b99a9d83ce3b802c656S3VersionKeyEE13941B",
-                        },
-                      ],
-                    },
-                  ],
-                },
-              ],
-            ],
-          },
+      "Properties": {
+        "Code": {
+          "S3Bucket": "cdk-hnb659fds-assets-123456789012-ap-northeast-1",
+          "S3Key": "9237631b006453b8d2b275e61053dbf9c1ec0da492720b99a9d83ce3b802c656.zip",
         },
-        "Environment": Object {
-          "Variables": Object {
+        "Environment": {
+          "Variables": {
             "STACK_ENV": "snapshot-test",
           },
         },
         "FunctionName": "dev-snowflake-aws-mysql-connector",
         "Handler": "index.handler",
-        "Layers": Array [
-          Object {
-            "Ref": "devsnowflakeawsmysqlconnectorlayer9A47E73D",
+        "Layers": [
+          {
+            "Ref": "devsnowflakeawsmysqlconnectorlayer664871FA",
           },
         ],
-        "Role": Object {
-          "Fn::GetAtt": Array [
-            "devsnowflakeawsmysqlconnectorServiceRole4253ECFA",
+        "Role": {
+          "Fn::GetAtt": [
+            "devsnowflakeawsmysqlconnectorServiceRoleE8A8AC35",
             "Arn",
           ],
         },
-        "Runtime": "nodejs12.x",
+        "Runtime": "nodejs16.x",
         "Timeout": 10,
-        "VpcConfig": Object {
-          "SecurityGroupIds": Array [
+        "VpcConfig": {
+          "SecurityGroupIds": [
             "sg-abcdefghijk123",
           ],
-          "SubnetIds": Array [
+          "SubnetIds": [
             "subnet-abcdefghijk123",
           ],
         },
       },
       "Type": "AWS::Lambda::Function",
     },
-    "devsnowflakeawsmysqlconnectorLogRetentionE8A47EC3": Object {
-      "Properties": Object {
-        "LogGroupName": Object {
-          "Fn::Join": Array [
+    "devsnowflakeawsmysqlconnectorLogRetentionEF04D299": {
+      "Properties": {
+        "LogGroupName": {
+          "Fn::Join": [
             "",
-            Array [
+            [
               "/aws/lambda/",
-              Object {
-                "Ref": "devsnowflakeawsmysqlconnectorA759905B",
+              {
+                "Ref": "devsnowflakeawsmysqlconnectorB5BFA4DE",
               },
             ],
           ],
         },
         "RetentionInDays": 3,
-        "ServiceToken": Object {
-          "Fn::GetAtt": Array [
+        "ServiceToken": {
+          "Fn::GetAtt": [
             "LogRetentionaae0aa3c5b4d4f87b02d85b201efdd8aFD4BFC8A",
             "Arn",
           ],
@@ -260,39 +205,39 @@ Object {
       },
       "Type": "Custom::LogRetention",
     },
-    "devsnowflakeawsmysqlconnectorServiceRole4253ECFA": Object {
-      "Properties": Object {
-        "AssumeRolePolicyDocument": Object {
-          "Statement": Array [
-            Object {
+    "devsnowflakeawsmysqlconnectorServiceRoleE8A8AC35": {
+      "Properties": {
+        "AssumeRolePolicyDocument": {
+          "Statement": [
+            {
               "Action": "sts:AssumeRole",
               "Effect": "Allow",
-              "Principal": Object {
+              "Principal": {
                 "Service": "lambda.amazonaws.com",
               },
             },
           ],
           "Version": "2012-10-17",
         },
-        "ManagedPolicyArns": Array [
-          Object {
-            "Fn::Join": Array [
+        "ManagedPolicyArns": [
+          {
+            "Fn::Join": [
               "",
-              Array [
+              [
                 "arn:",
-                Object {
+                {
                   "Ref": "AWS::Partition",
                 },
                 ":iam::aws:policy/service-role/AWSLambdaBasicExecutionRole",
               ],
             ],
           },
-          Object {
-            "Fn::Join": Array [
+          {
+            "Fn::Join": [
               "",
-              Array [
+              [
                 "arn:",
-                Object {
+                {
                   "Ref": "AWS::Partition",
                 },
                 ":iam::aws:policy/service-role/AWSLambdaVPCAccessExecutionRole",
@@ -303,99 +248,92 @@ Object {
       },
       "Type": "AWS::IAM::Role",
     },
-    "devsnowflakeawsmysqlconnectorlayer9A47E73D": Object {
-      "Properties": Object {
-        "CompatibleRuntimes": Array [
-          "nodejs12.x",
+    "devsnowflakeawsmysqlconnectorlayer664871FA": {
+      "Properties": {
+        "CompatibleRuntimes": [
+          "nodejs16.x",
         ],
-        "Content": Object {
-          "S3Bucket": Object {
-            "Ref": "AssetParameters9237631b006453b8d2b275e61053dbf9c1ec0da492720b99a9d83ce3b802c656S3BucketE83B8C93",
-          },
-          "S3Key": Object {
-            "Fn::Join": Array [
-              "",
-              Array [
-                Object {
-                  "Fn::Select": Array [
-                    0,
-                    Object {
-                      "Fn::Split": Array [
-                        "||",
-                        Object {
-                          "Ref": "AssetParameters9237631b006453b8d2b275e61053dbf9c1ec0da492720b99a9d83ce3b802c656S3VersionKeyEE13941B",
-                        },
-                      ],
-                    },
-                  ],
-                },
-                Object {
-                  "Fn::Select": Array [
-                    1,
-                    Object {
-                      "Fn::Split": Array [
-                        "||",
-                        Object {
-                          "Ref": "AssetParameters9237631b006453b8d2b275e61053dbf9c1ec0da492720b99a9d83ce3b802c656S3VersionKeyEE13941B",
-                        },
-                      ],
-                    },
-                  ],
-                },
-              ],
-            ],
-          },
+        "Content": {
+          "S3Bucket": "cdk-hnb659fds-assets-123456789012-ap-northeast-1",
+          "S3Key": "9237631b006453b8d2b275e61053dbf9c1ec0da492720b99a9d83ce3b802c656.zip",
         },
       },
       "Type": "AWS::Lambda::LayerVersion",
     },
-    "devsnowflakeawsmysqlconnectorrestapi034D486F": Object {
-      "Properties": Object {
+    "devsnowflakeawsmysqlconnectorrestapi7DB334E9": {
+      "Properties": {
         "Description": "Managed by CloudFormation (CDK)",
-        "EndpointConfiguration": Object {
-          "Types": Array [
+        "EndpointConfiguration": {
+          "Types": [
             "REGIONAL",
           ],
         },
         "Name": "dev-snowflake-aws-mysql-connector-rest-api",
+        "Policy": {
+          "Statement": [
+            {
+              "Action": "execute-api:Invoke",
+              "Effect": "Allow",
+              "Principal": {
+                "AWS": {
+                  "Fn::Join": [
+                    "",
+                    [
+                      "arn:aws:sts::123456789012:assumed-role/",
+                      {
+                        "Ref": "devsnowflakeawsmysqlconnectorsnowflakeroleDE07CE19",
+                      },
+                      "/snowflake",
+                    ],
+                  ],
+                },
+              },
+              "Resource": "execute-api:/*/POST/*",
+            },
+          ],
+          "Version": "2012-10-17",
+        },
       },
       "Type": "AWS::ApiGateway::RestApi",
     },
-    "devsnowflakeawsmysqlconnectorrestapiAccount18867F40": Object {
-      "DependsOn": Array [
-        "devsnowflakeawsmysqlconnectorrestapi034D486F",
+    "devsnowflakeawsmysqlconnectorrestapiAccount672C168F": {
+      "DeletionPolicy": "Retain",
+      "DependsOn": [
+        "devsnowflakeawsmysqlconnectorrestapi7DB334E9",
       ],
-      "Properties": Object {
-        "CloudWatchRoleArn": Object {
-          "Fn::GetAtt": Array [
-            "devsnowflakeawsmysqlconnectorrestapiCloudWatchRole2E577E85",
+      "Properties": {
+        "CloudWatchRoleArn": {
+          "Fn::GetAtt": [
+            "devsnowflakeawsmysqlconnectorrestapiCloudWatchRole0D1A85FA",
             "Arn",
           ],
         },
       },
       "Type": "AWS::ApiGateway::Account",
+      "UpdateReplacePolicy": "Retain",
     },
-    "devsnowflakeawsmysqlconnectorrestapiCloudWatchRole2E577E85": Object {
-      "Properties": Object {
-        "AssumeRolePolicyDocument": Object {
-          "Statement": Array [
-            Object {
+    "devsnowflakeawsmysqlconnectorrestapiCloudWatchRole0D1A85FA": {
+      "DeletionPolicy": "Retain",
+      "Properties": {
+        "AssumeRolePolicyDocument": {
+          "Statement": [
+            {
               "Action": "sts:AssumeRole",
               "Effect": "Allow",
-              "Principal": Object {
+              "Principal": {
                 "Service": "apigateway.amazonaws.com",
               },
             },
           ],
           "Version": "2012-10-17",
         },
-        "ManagedPolicyArns": Array [
-          Object {
-            "Fn::Join": Array [
+        "ManagedPolicyArns": [
+          {
+            "Fn::Join": [
               "",
-              Array [
+              [
                 "arn:",
-                Object {
+                {
                   "Ref": "AWS::Partition",
                 },
                 ":iam::aws:policy/service-role/AmazonAPIGatewayPushToCloudWatchLogs",
@@ -405,128 +343,54 @@ Object {
         ],
       },
       "Type": "AWS::IAM::Role",
+      "UpdateReplacePolicy": "Retain",
     },
-    "devsnowflakeawsmysqlconnectorrestapiDeployment2D477E321c175f15134bf8c37d5ee732f898d875": Object {
-      "DependsOn": Array [
-        "devsnowflakeawsmysqlconnectorrestapipostPOSTF18BCB2E",
-        "devsnowflakeawsmysqlconnectorrestapipostAA314BEF",
+    "devsnowflakeawsmysqlconnectorrestapiDeployment21018569f92c222ca27c177b787a1f9910d359b8": {
+      "DependsOn": [
+        "devsnowflakeawsmysqlconnectorrestapiPOST5D0B9390",
       ],
-      "Properties": Object {
-        "Description": "Automatically created by the RestApi construct",
-        "RestApiId": Object {
-          "Ref": "devsnowflakeawsmysqlconnectorrestapi034D486F",
+      "Properties": {
+        "Description": "Managed by CloudFormation (CDK)",
+        "RestApiId": {
+          "Ref": "devsnowflakeawsmysqlconnectorrestapi7DB334E9",
         },
       },
       "Type": "AWS::ApiGateway::Deployment",
     },
-    "devsnowflakeawsmysqlconnectorrestapiDeploymentStagedefaultE3F69B5E": Object {
-      "Properties": Object {
-        "DeploymentId": Object {
-          "Ref": "devsnowflakeawsmysqlconnectorrestapiDeployment2D477E321c175f15134bf8c37d5ee732f898d875",
+    "devsnowflakeawsmysqlconnectorrestapiDeploymentStagedefault644A3DD6": {
+      "DependsOn": [
+        "devsnowflakeawsmysqlconnectorrestapiAccount672C168F",
+      ],
+      "Properties": {
+        "DeploymentId": {
+          "Ref": "devsnowflakeawsmysqlconnectorrestapiDeployment21018569f92c222ca27c177b787a1f9910d359b8",
         },
-        "RestApiId": Object {
-          "Ref": "devsnowflakeawsmysqlconnectorrestapi034D486F",
+        "RestApiId": {
+          "Ref": "devsnowflakeawsmysqlconnectorrestapi7DB334E9",
         },
         "StageName": "default",
       },
       "Type": "AWS::ApiGateway::Stage",
     },
-    "devsnowflakeawsmysqlconnectorrestapipostAA314BEF": Object {
-      "Properties": Object {
-        "ParentId": Object {
-          "Fn::GetAtt": Array [
-            "devsnowflakeawsmysqlconnectorrestapi034D486F",
-            "RootResourceId",
-          ],
-        },
-        "PathPart": "post",
-        "RestApiId": Object {
-          "Ref": "devsnowflakeawsmysqlconnectorrestapi034D486F",
-        },
-      },
-      "Type": "AWS::ApiGateway::Resource",
-    },
-    "devsnowflakeawsmysqlconnectorrestapipostPOSTApiPermissionSnowflakeAWSMySQLConnectorTestStackdevsnowflakeawsmysqlconnectorrestapi0B44822CPOSTpostC3D7D6E9": Object {
-      "Properties": Object {
-        "Action": "lambda:InvokeFunction",
-        "FunctionName": Object {
-          "Fn::GetAtt": Array [
-            "devsnowflakeawsmysqlconnectorA759905B",
-            "Arn",
-          ],
-        },
-        "Principal": "apigateway.amazonaws.com",
-        "SourceArn": Object {
-          "Fn::Join": Array [
-            "",
-            Array [
-              "arn:",
-              Object {
-                "Ref": "AWS::Partition",
-              },
-              ":execute-api:ap-northeast-1:123456789012:",
-              Object {
-                "Ref": "devsnowflakeawsmysqlconnectorrestapi034D486F",
-              },
-              "/",
-              Object {
-                "Ref": "devsnowflakeawsmysqlconnectorrestapiDeploymentStagedefaultE3F69B5E",
-              },
-              "/POST/post",
-            ],
-          ],
-        },
-      },
-      "Type": "AWS::Lambda::Permission",
-    },
-    "devsnowflakeawsmysqlconnectorrestapipostPOSTApiPermissionTestSnowflakeAWSMySQLConnectorTestStackdevsnowflakeawsmysqlconnectorrestapi0B44822CPOSTpost4F08307C": Object {
-      "Properties": Object {
-        "Action": "lambda:InvokeFunction",
-        "FunctionName": Object {
-          "Fn::GetAtt": Array [
-            "devsnowflakeawsmysqlconnectorA759905B",
-            "Arn",
-          ],
-        },
-        "Principal": "apigateway.amazonaws.com",
-        "SourceArn": Object {
-          "Fn::Join": Array [
-            "",
-            Array [
-              "arn:",
-              Object {
-                "Ref": "AWS::Partition",
-              },
-              ":execute-api:ap-northeast-1:123456789012:",
-              Object {
-                "Ref": "devsnowflakeawsmysqlconnectorrestapi034D486F",
-              },
-              "/test-invoke-stage/POST/post",
-            ],
-          ],
-        },
-      },
-      "Type": "AWS::Lambda::Permission",
-    },
-    "devsnowflakeawsmysqlconnectorrestapipostPOSTF18BCB2E": Object {
-      "Properties": Object {
+    "devsnowflakeawsmysqlconnectorrestapiPOST5D0B9390": {
+      "Properties": {
         "AuthorizationType": "AWS_IAM",
         "HttpMethod": "POST",
-        "Integration": Object {
+        "Integration": {
           "IntegrationHttpMethod": "POST",
           "Type": "AWS_PROXY",
-          "Uri": Object {
-            "Fn::Join": Array [
+          "Uri": {
+            "Fn::Join": [
               "",
-              Array [
+              [
                 "arn:",
-                Object {
+                {
                   "Ref": "AWS::Partition",
                 },
                 ":apigateway:ap-northeast-1:lambda:path/2015-03-31/functions/",
-                Object {
-                  "Fn::GetAtt": Array [
-                    "devsnowflakeawsmysqlconnectorA759905B",
+                {
+                  "Fn::GetAtt": [
+                    "devsnowflakeawsmysqlconnectorB5BFA4DE",
                     "Arn",
                   ],
                 },
@@ -535,14 +399,129 @@ Object {
             ],
           },
         },
-        "ResourceId": Object {
-          "Ref": "devsnowflakeawsmysqlconnectorrestapipostAA314BEF",
+        "ResourceId": {
+          "Fn::GetAtt": [
+            "devsnowflakeawsmysqlconnectorrestapi7DB334E9",
+            "RootResourceId",
+          ],
         },
-        "RestApiId": Object {
-          "Ref": "devsnowflakeawsmysqlconnectorrestapi034D486F",
+        "RestApiId": {
+          "Ref": "devsnowflakeawsmysqlconnectorrestapi7DB334E9",
         },
       },
       "Type": "AWS::ApiGateway::Method",
+    },
+    "devsnowflakeawsmysqlconnectorrestapiPOSTApiPermissionSnowflakeAWSMySQLConnectorTestStackdevsnowflakeawsmysqlconnectorrestapi8FC7755BPOST2C201A90": {
+      "Properties": {
+        "Action": "lambda:InvokeFunction",
+        "FunctionName": {
+          "Fn::GetAtt": [
+            "devsnowflakeawsmysqlconnectorB5BFA4DE",
+            "Arn",
+          ],
+        },
+        "Principal": "apigateway.amazonaws.com",
+        "SourceArn": {
+          "Fn::Join": [
+            "",
+            [
+              "arn:",
+              {
+                "Ref": "AWS::Partition",
+              },
+              ":execute-api:ap-northeast-1:123456789012:",
+              {
+                "Ref": "devsnowflakeawsmysqlconnectorrestapi7DB334E9",
+              },
+              "/",
+              {
+                "Ref": "devsnowflakeawsmysqlconnectorrestapiDeploymentStagedefault644A3DD6",
+              },
+              "/POST/",
+            ],
+          ],
+        },
+      },
+      "Type": "AWS::Lambda::Permission",
+    },
+    "devsnowflakeawsmysqlconnectorrestapiPOSTApiPermissionTestSnowflakeAWSMySQLConnectorTestStackdevsnowflakeawsmysqlconnectorrestapi8FC7755BPOST29C577B2": {
+      "Properties": {
+        "Action": "lambda:InvokeFunction",
+        "FunctionName": {
+          "Fn::GetAtt": [
+            "devsnowflakeawsmysqlconnectorB5BFA4DE",
+            "Arn",
+          ],
+        },
+        "Principal": "apigateway.amazonaws.com",
+        "SourceArn": {
+          "Fn::Join": [
+            "",
+            [
+              "arn:",
+              {
+                "Ref": "AWS::Partition",
+              },
+              ":execute-api:ap-northeast-1:123456789012:",
+              {
+                "Ref": "devsnowflakeawsmysqlconnectorrestapi7DB334E9",
+              },
+              "/test-invoke-stage/POST/",
+            ],
+          ],
+        },
+      },
+      "Type": "AWS::Lambda::Permission",
+    },
+    "devsnowflakeawsmysqlconnectorsnowflakeroleDE07CE19": {
+      "Properties": {
+        "AssumeRolePolicyDocument": {
+          "Statement": [
+            {
+              "Action": "sts:AssumeRole",
+              "Condition": {
+                "StringEquals": {
+                  "sts:ExternalId": "snowflake-external-id",
+                },
+              },
+              "Effect": "Allow",
+              "Principal": {
+                "AWS": "arn:aws:iam::987654321098:user/snowflake-iam-user",
+              },
+            },
+          ],
+          "Version": "2012-10-17",
+        },
+        "RoleName": "dev-snowflake-aws-mysql-connector-execution-role-for-snowflake",
+      },
+      "Type": "AWS::IAM::Role",
+    },
+  },
+  "Rules": {
+    "CheckBootstrapVersion": {
+      "Assertions": [
+        {
+          "Assert": {
+            "Fn::Not": [
+              {
+                "Fn::Contains": [
+                  [
+                    "1",
+                    "2",
+                    "3",
+                    "4",
+                    "5",
+                  ],
+                  {
+                    "Ref": "BootstrapVersion",
+                  },
+                ],
+              },
+            ],
+          },
+          "AssertDescription": "CDK bootstrap stack version 6 required. Please run 'cdk bootstrap' with a recent version of the CDK CLI.",
+        },
+      ],
     },
   },
 }
